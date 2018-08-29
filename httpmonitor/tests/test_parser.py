@@ -24,7 +24,6 @@ def test_apache():
     line_42 = {'host': '91.239.186.133', 'user': '-', 'date': '17/May/2015:08:05:04 +0000', 'request': 'GET /downloads/product_2 HTTP/1.1', 'status': '304', 'size': '0', 'referer': '-', 'agent': 'Debian APT-HTTP/1.3 (0.9.7.9)'}
     line_2717 = {'host': '5.39.64.195', 'user': '-', 'date': '18/May/2015:06:05:52 +0000', 'request': 'GET /downloads/product_2 HTTP/1.1', 'status': '404', 'size': '338', 'referer': '-', 'agent': 'Debian APT-HTTP/1.3 (1.0.1ubuntu2)'}
     line_7654 = {'host': '31.31.75.239', 'user': '-', 'date': '20/May/2015:00:05:19 +0000', 'request': 'GET /downloads/product_1 HTTP/1.1', 'status': '304', 'size': '0', 'referer': '-', 'agent': 'Debian APT-HTTP/1.3 (0.9.7.9)'}
-    print(parse_line(nginx_lines[7654], type_="extended"))
     assert parse_line(nginx_lines[0], type_="extended") == line_0
     assert parse_line(nginx_lines[42], type_="extended") == line_42
     assert parse_line(nginx_lines[2717], type_="extended") == line_2717
