@@ -1,0 +1,11 @@
+name: httpmonitor
+
+dependencies:
+  - python=3
+  - pip:
+    - click
+    # Dev
+    - pylint
+    - pytest
+    - versioneer
+    - twine>=1.11.0
