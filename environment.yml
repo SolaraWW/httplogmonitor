@@ -4,8 +4,10 @@ dependencies:
   - python=3
   - pip:
     - click
+    - pandas
     # Dev
     - pylint
     - pytest
+    - pytest-asyncio
     - versioneer
     - twine>=1.11.0

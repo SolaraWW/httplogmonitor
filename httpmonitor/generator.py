@@ -10,8 +10,8 @@ apache_lines = open(fname, "r").readlines()
 
 
 @click.command()
-@click.option("--file", "filename", default="logs.txt", type=click.Path())
-@click.option("--n", default=1, help="Number of items to write")
+@click.option("--file", "-f", "filename", default="/var/log/access.log ", type=click.Path())
+@click.option("-n", default=1, help="Number of items to write")
 @click.option("--mean", default=1, help="Mean (seconds)")
 @click.option("--std", default=0.5, help="STD (seconds)")
 def main(filename, n, mean, std):
@@ -23,7 +23,8 @@ def main(filename, n, mean, std):
                 click.echo(f"Writting: {line}")
                 f.write(line + "\n")
             f.flush()
-            time.sleep(abs(random.normalvariate(mean, std)))
+            time.sleep(1)
+            # time.sleep(abs(random.normalvariate(mean, std)))
 
 
 if __name__ == "__main__":
