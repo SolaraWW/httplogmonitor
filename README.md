@@ -33,14 +33,14 @@ ENTRYPOINT ["python", "main.py"]
 ## Solution
 
 1. Python library structure including versioneer
-1. Uses asyncio to manage the corrutines
+1. Uses asyncio to manage 3 the corrutines
 1. Can read from multiple files configurable from arguments in the CLI
 1. All values configurable from CLI arguments
-1. Test for the alert system and other basic tests
+1. Test for the alert system and other basic parsing tests
 1. Generate script to test. Generates events to a file randomly (normal distribution) from a sample file
 1. Docker env
 
-## How to an example
+## How to run an example
 
 Create the local environment doing:
 
@@ -60,7 +60,7 @@ Build docker image using:
 make build
 ```
 
-Start the two generate script locally so one will generate two events per second (normal dist) and the other one 5 evens per seconds (normal dist)
+Start the two generate scripts locally so one will generate two events per second and the other one 5 events per second
 
 ```
 ## Generate two events every
@@ -68,29 +68,28 @@ python httpmonitor/generator.py --file ./scratch/log.txt -n 2
 python httpmonitor/generator.py --file ./scratch/log2.txt -n 5
 ```
 
-Run the monitor:
+Run the monitor as a container:
 - Reading two files (`/var/log/access2.log` -> `./scratch/log.txt` and `/var/log/access.log` -> `./scratch/log2.txt`)
 - Interval of 3 seconds 
-- Alert threshold of 10 events every 5ss
+- Alert threshold of 10 events every 3s
 
 ```
 make devtest
 ```
 
-At this point the program will start printing some alert. Stop the generator with `-n 5` and it will print a recover message.
+At this point the program will start printing some alertss. Stop the generator with `-n 5` and it will print a recover message.
 
 ## How to run it
 
-To run it with the problem description defaults:
+To run it as a container with the problem description defaults:
 
-- Reading from a from a single file (`/var/log/access.log`) where that file is mounted to `./scratch/log.txt` in the host 
+- Reading from a from a single file (`/var/log/access.log` -> `./scratch/log.txt`)
 - Update interval of 10 seconds
 - Alert threshold of 1200 events every 120s
 
 ```
 make run
 ```
-
 
 ## Improvements
 
